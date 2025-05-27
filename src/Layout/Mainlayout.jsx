@@ -21,7 +21,7 @@ const Mainlayout = () => {
         );
     }
     return (
-        <div className='w-full md:w-[1450px] mx-auto border'>
+        <div>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
