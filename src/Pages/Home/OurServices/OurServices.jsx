@@ -61,7 +61,7 @@ const OurServices = () => {
         viewport={{ once: true }}
       >
         <p className="text-xl text-blue-500 font-semibold mb-2">Our Services</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4">
           Complete Care for Every Smile
         </h2>
         <p className="text-base md:text-lg text-gray-600">

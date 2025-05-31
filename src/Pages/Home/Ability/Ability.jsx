@@ -14,7 +14,7 @@ const Ability = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <div className="w-full bg-blue-800 text-white py-16 px-4">
+    <div className="w-full bg-purple-800 text-white py-16 px-4">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
