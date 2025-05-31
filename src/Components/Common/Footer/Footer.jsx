@@ -96,7 +96,7 @@ const Footer = () => {
                 <span className="text-white font-semibold block mb-1">
                   Clinic Location
                 </span>
-                Dhaka, Bangladesh
+               62/A, Siddeswari Road, 1st Floor - Right Side (Opposite Monowara Hospital & VQN School,Near Baily Road) Channel i & Gateway School Building, Ramna, Dhaka-1217
               </div>
             </li>
             <li className="flex items-start gap-4">
@@ -111,7 +111,7 @@ const Footer = () => {
               <FaEnvelope className="text-purple-400 mt-1 text-lg flex-shrink-0" />
               <div>
                 <span className="text-white font-semibold block mb-1">Email</span>
-                contact@dentiacare.com
+                dr.rasheduzzaman@gmail.com
               </div>
             </li>
           </ul>
