@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* Desktop Button */}
           <div className="hidden lg:flex z-10">
             <NavLink
-              to="/book"
+              to="/appointment"
               className={`relative inline-block overflow-hidden px-6 py-2 rounded-md font-semibold transition-colors duration-500 group ${
                 isHomePage && !scrolledPastBanner ? 'bg-white text-black' : 'bg-black text-white'
               }`}
@@ -239,7 +239,7 @@ const Navbar = () => {
                 ))}
                 <li>
                   <NavLink
-                    to="/book"
+                    to="/appointment"
                     onClick={() => setMenuOpen(false)}
                     className="bg-blue-500 text-white text-center rounded-md px-4 py-2 hover:bg-blue-700 transition block"
                   >

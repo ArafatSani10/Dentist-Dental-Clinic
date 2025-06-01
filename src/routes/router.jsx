@@ -5,6 +5,7 @@ import Mainlayout from "../Layout/Mainlayout";
 import Home from "../Pages/Home/Home";
 import Dentist from "../Pages/Dentist/Dentist";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import Appointment from "../Pages/Appointment/Appointment";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
             {
                 path:'/contact',
                 element:<ContactUs></ContactUs>
+            },
+
+            {
+                path:'/appointment',
+                element:<Appointment></Appointment>
             },
         ],
     },
