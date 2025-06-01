@@ -10,42 +10,43 @@ const tabs = [
 
 const tabContents = [
   {
-    title: "Fast & professional treatments for every patient",
+    title: "Fast, Professional Dental Treatments",
     subtitle:
-      "Proin gravida nibh vel velit auctor aliquet ent. Est vel sum sollicitudin, lorem ad quismi bibe nd mi auctor.",
+      "Experience gentle and efficient dental care tailored to every patient's unique needs.",
     description:
-      "Duis sed odio sit amet nibh vulputate cursus a sit am maur. Morbi accumsan sed ipsum velit. Nam nec tellus a od tincidunt auctor a ornare odio.",
+      "From routine checkups to advanced procedures, our experienced team ensures each treatment is comfortable, timely, and effective. We combine modern tools with a patient-first approach to keep your smile healthy and bright.",
     image:
       "https://allsmiles.qodeinteractive.com/wp-content/uploads/2020/12/h1-tabs-img-1.jpg",
   },
   {
-    title: "Expert orthodontic alignment services",
+    title: "Precise Orthodontic Alignment",
     subtitle:
-      "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.",
+      "Expert alignment services to help you achieve a healthier, more confident smile.",
     description:
-      "Our alignment specialists help ensure your bite and smile are properly aligned with modern techniques and care.",
+      "Our orthodontists use cutting-edge methods to correct bite issues and align your teeth comfortably. Whether you're considering braces or clear aligners, we provide personalized care with beautiful results.",
     image:
       "https://allsmiles.qodeinteractive.com/wp-content/uploads/2020/12/h1-tabs-img-2.jpg",
   },
   {
-    title: "A confident smile through cosmetic dentistry",
+    title: "Enhance Your Smile with Cosmetic Dentistry",
     subtitle:
-      "Enhance your appearance with expert cosmetic treatments tailored just for you.",
+      "Bring out your best smile with treatments designed for beauty and confidence.",
     description:
-      "Whitening, veneers, bonding — our specialists use top-tier solutions for aesthetic excellence in dental care.",
+      "We offer teeth whitening, veneers, bonding, and more — all tailored to enhance the appearance of your smile. Our cosmetic experts focus on both aesthetics and health for natural-looking, lasting results.",
     image:
       "https://allsmiles.qodeinteractive.com/wp-content/uploads/2021/01/h1-tabs-img-3.jpg",
   },
   {
-    title: "Live dental advisory for every concern",
+    title: "Live Dental Advisory & Support",
     subtitle:
-      "Connect with expert dentists anytime for consultations and guidance.",
+      "Talk to our dental experts anytime for advice, support, or emergency guidance.",
     description:
-      "Whether it's emergency advice or regular consultation, our live dental advisors are available for prompt support.",
+      "Got a question or concern? Our live advisory service connects you directly with dental professionals who are ready to assist — whether it’s urgent care or routine questions, we’re here for you.",
     image:
       "https://allsmiles.qodeinteractive.com/wp-content/uploads/2020/12/h1-tabs-img-4.jpg",
   },
 ];
+
 
 export default function DentalTabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -60,10 +61,9 @@ export default function DentalTabs() {
               key={index}
               onClick={() => setActiveTab(index)}
               className={`whitespace-nowrap px-4 py-2 text-sm sm:text-base font-medium rounded-full transition duration-300 min-w-fit
-                ${
-                  activeTab === index
-                    ? "bg-blue-600 text-white shadow-lg"
-                    : "bg-white text-blue-700 hover:bg-blue-100"
+                ${activeTab === index
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "bg-white text-blue-700 hover:bg-blue-100"
                 }`}
             >
               {tab}

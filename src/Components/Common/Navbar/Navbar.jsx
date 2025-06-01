@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -24,44 +27,49 @@ const Navbar = () => {
     { name: 'Contact Us', to: '/contact' },
   ];
 
-  const activeClass = scrolledPastBanner
-    ? 'text-black font-semibold'
-    : 'text-white font-semibold';
+  const activeClass = 'font-semibold underline underline-offset-4';
 
-  // Scroll logic
+  // Scroll logic for Home Page
   useEffect(() => {
+    if (!isHomePage) return;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Toggle visibility on scroll direction
+      // Hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setShowNavbar(false); // scrolling down
+        setShowNavbar(false);
       } else {
-        setShowNavbar(true); // scrolling up
+        setShowNavbar(true);
       }
 
-      // Toggle bg and text color after banner
-      if (currentScrollY > 100) {
-        setScrolledPastBanner(true);
-      } else {
-        setScrolledPastBanner(false);
-      }
-
+      // Check if scrolled past banner
+      setScrolledPastBanner(currentScrollY > 100);
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isHomePage]);
+
+  const navbarBg = isHomePage
+    ? scrolledPastBanner
+      ? 'bg-white shadow-md'
+      : 'bg-transparent'
+    : 'bg-white shadow-md';
+
+  const navTextColor = isHomePage
+    ? scrolledPastBanner
+      ? 'text-black'
+      : 'text-white'
+    : 'text-black';
 
   return (
     <motion.nav
       initial={{ y: 0 }}
       animate={{ y: showNavbar ? 0 : -100 }}
       transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 p-5 ${
-        scrolledPastBanner ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 p-5 ${navbarBg}`}
     >
       <div className="relative max-w-full mx-auto px-4">
         <div className="flex justify-between items-center h-16 relative">
@@ -76,9 +84,7 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <ul
-            className={`hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 text-[15px] font-medium ${
-              scrolledPastBanner ? 'text-black' : 'text-white'
-            }`}
+            className={`hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 text-[15px] font-medium ${navTextColor}`}
           >
             {navLinks.map((link, idx) =>
               link.dropdown ? (
@@ -92,9 +98,7 @@ const Navbar = () => {
                   <div className="flex items-center cursor-pointer px-4 py-3">
                     <span>{link.name}</span>
                     <svg
-                      className={`ml-1 w-4 h-4 transition-transform duration-300 ${
-                        scrolledPastBanner ? 'text-black' : 'text-white'
-                      }`}
+                      className={`ml-1 w-4 h-4 transition-transform duration-300 ${navTextColor}`}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
@@ -129,7 +133,9 @@ const Navbar = () => {
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
-                      'px-4 py-2 rounded-md transition ' + (isActive ? activeClass : '')
+                      `px-4 py-2 rounded-md transition ${navTextColor} ${
+                        isActive ? activeClass : ''
+                      }`
                     }
                   >
                     {link.name}
@@ -144,7 +150,7 @@ const Navbar = () => {
             <NavLink
               to="/book"
               className={`relative inline-block overflow-hidden px-6 py-2 rounded-md font-semibold transition-colors duration-500 group ${
-                scrolledPastBanner ? 'bg-black text-white' : 'bg-white text-black'
+                isHomePage && !scrolledPastBanner ? 'bg-white text-black' : 'bg-black text-white'
               }`}
             >
               <span className="absolute inset-0 w-full h-full transform scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 bg-blue-600" />
@@ -156,7 +162,7 @@ const Navbar = () => {
           <div className="lg:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className={scrolledPastBanner ? 'text-black' : 'text-white'}
+              className={navTextColor}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
@@ -233,7 +239,7 @@ const Navbar = () => {
                 ))}
                 <li>
                   <NavLink
-                    to="/login"
+                    to="/book"
                     onClick={() => setMenuOpen(false)}
                     className="bg-blue-500 text-white text-center rounded-md px-4 py-2 hover:bg-blue-700 transition block"
                   >

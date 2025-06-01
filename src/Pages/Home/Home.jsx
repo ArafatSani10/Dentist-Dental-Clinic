@@ -5,6 +5,7 @@ import OurServices from './OurServices/OurServices';
 import Ability from './Ability/Ability';
 import WhyChooseUs from './WhyChoose/WhyChooseUs';
 import DentalTabs from './DentalTabs/DentalTabs';
+import FAQ from './FAQ/FAQ';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Ability></Ability>
             <WhyChooseUs></WhyChooseUs>
             <DentalTabs></DentalTabs>
+            <FAQ></FAQ>
         </div>
     );
 };
