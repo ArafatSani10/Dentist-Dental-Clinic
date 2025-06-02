@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Services data
 const services = [
@@ -8,21 +9,25 @@ const services = [
     title: "General Dentistry",
     description: "Complete oral care for every smile with cleanings, exams, and more.",
     icon: "https://madebydesignesia.com/themes/dentia/images/icons/tooth-1.png",
+    link: 'services/General',
   },
   {
     title: "Cosmetic Dentistry",
     description: "Enhance your smile with whitening, veneers, and aesthetic treatments.",
     icon: "https://madebydesignesia.com/themes/dentia/images/icons/tooth-2.png",
+    link:'services/cosmetic',
   },
   {
     title: "Pediatric Dentistry",
     description: "Gentle and friendly dental care tailored for children and teens.",
     icon: "https://madebydesignesia.com/themes/dentia/images/icons/tooth-3.png",
+    link:'services/pediatric',
   },
   {
     title: "Restorative Dentistry",
     description: "Rebuild and restore your smile with crowns, bridges, and implants.",
     icon: "https://madebydesignesia.com/themes/dentia/images/icons/tooth-4.png",
+    link:'services/restorative%20'
   },
 ];
 
@@ -36,11 +41,13 @@ const containerVariant = {
   },
 };
 
-// Clean bounce-style animation (no opacity)
+// Card animation with opacity and zoom for more polish
 const cardVariant = {
-  hidden: { y: 80 },
+  hidden: { y: 80, opacity: 0, scale: 0.95 },
   visible: {
     y: 0,
+    opacity: 1,
+    scale: 1,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -49,14 +56,16 @@ const cardVariant = {
   },
 };
 
+const slugify = (title) => title.toLowerCase().replace(/\s+/g, "-");
+
 const OurServices = () => {
   return (
     <div className="bg-purple-50 py-16 px-4">
       {/* Section Heading */}
       <motion.div
         className="max-w-5xl mx-auto text-center mb-12"
-        initial={{ y: 60 }}
-        whileInView={{ y: 0 }}
+        initial={{ y: 60, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
         viewport={{ once: true }}
       >
@@ -90,9 +99,13 @@ const OurServices = () => {
               {service.title}
             </h3>
             <p className="text-sm text-gray-600 flex-grow">{service.description}</p>
-            <button className="text-blue-600 hover:text-blue-800 mt-2 flex items-center gap-2 font-medium">
+            <Link
+              to={service.link}
+              className="text-blue-600 hover:text-blue-800 mt-2 flex items-center gap-2 font-medium"
+            >
               Read more <FaPlus size={12} />
-            </button>
+            </Link>
+
           </motion.div>
         ))}
       </motion.div>
