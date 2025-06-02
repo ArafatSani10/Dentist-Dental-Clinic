@@ -20,6 +20,8 @@ const Navbar = () => {
       dropdown: [
         { name: 'General Dentistry', to: '/services/General' },
         { name: 'Cosmetic Dentistry', to: '/services/cosmetic' },
+        { name: 'Pediatric  Dentistry', to: '/services/pediatric' },
+        { name: 'Restorative Dentistry', to: '/services/restorative ' },
       ],
     },
     { name: 'Dentist', to: '/dentist' },
